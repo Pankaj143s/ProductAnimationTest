@@ -308,7 +308,7 @@ function showProductAnimation() {
     // Force reload by appending a unique timestamp
     productImage.src = ""; // Clear previous GIF
     setTimeout(() => {
-        productImage.src = `./assets/Product_Animation5.gif?${Date.now()}`;
+        productImage.src = `./assets/Product_Animation7.gif?${Date.now()}`;
         console.log("GIF src updated:", productImage.src);
     }, 50);
 
