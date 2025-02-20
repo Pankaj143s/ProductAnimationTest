@@ -243,7 +243,7 @@ Star Movement Animations (UNCHANGED)
 @media (max-width: 480px) {
   #product-animation-image {
     max-width: 1120px; /* 40% larger */
-    width: 90vw; /* Force bigger scaling */
+    width: 80vw; /* Force bigger scaling */
   }
 }
 
@@ -251,7 +251,7 @@ Star Movement Animations (UNCHANGED)
 @media (min-width: 768px) and (max-width: 1199px) {
   #product-animation-image {
     max-width: 800px; /* Default size */
-    width: 70vw; /* Force bigger scaling */
+    width: 75vw; /* Force bigger scaling */
   }
 }
 
@@ -259,7 +259,7 @@ Star Movement Animations (UNCHANGED)
 @media (max-width: 360px) {
   #product-animation-image {
     max-width: 400px; /* Adjust for small screens */
-    width: 80vw; /* Stretch to fit viewport */
+    width: 90vw; /* Stretch to fit viewport */
   }
 }
 
