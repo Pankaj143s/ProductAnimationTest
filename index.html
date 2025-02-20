@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Star Animation with Pages</title>
+    <style>
+      .page {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+        font-family: Arial, sans-serif;
+      }
+      .page1 {
+        background-color: lightyellow;
+      }
+      .page2 {
+        background-color: lightseagreen;
+      }
+      .page3 {
+        background-color: lightgoldenrodyellow;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Star Animation Container -->
+    <div class="star-animation-wrapper">
+      <div class="star-container"></div>
+      <div class="message-container"></div>
+    </div>
+
+    <!-- Product Animation "Card" -->
+    <div id="product-animation-container">
+      <img
+        src="./assets/Product_Animation5.gif"
+        alt="Product Animation"
+        id="product-animation-image"
+      />
+    </div>
+
+    <!-- Page 1 -->
+    <div class="page page1">Page 1</div>
+    <!-- Page 2 -->
+    <div class="page page2">Page 2</div>
+    <!-- Page 3 -->
+    <div class="page page3">Page 3</div>
+
+    <!-- Link to External JS -->
+    <script src="script.js"></script>
+  </body>
+</html>
