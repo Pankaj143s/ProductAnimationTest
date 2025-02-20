@@ -1,6 +1,6 @@
 /* 
 ===============================================
- STAR ANIMATION WRAPPER (UNALTERED FROM ORIGINAL)
+ STAR ANIMATION WRAPPER (Unchanged from Original)
 ===============================================
 */
 .star-animation-wrapper {
@@ -73,7 +73,7 @@
   height: 40px;
 }
 
-/* Image Styling for any "first message" pop-up */
+/* Optional "first message" pop-up styling */
 #first-message-image {
   max-width: 90%;
   width: 420px;
@@ -93,7 +93,7 @@
   transition: opacity 1s ease, transform 2s ease-in-out;
 }
 
-/* Responsive Tweaks */
+/* Responsive Tweaks for Star Messages */
 @media (max-width: 1366px) {
   .star-animation-wrapper .message-container {
     right: 0;
@@ -140,7 +140,9 @@
   }
 }
 
-/* Star Movement Animations (UNCHANGED) */
+/*
+Star Movement Animations (UNCHANGED)
+*/
 @keyframes move-star-1 {
   0% {
     transform: translate(-5vw, -3vh);
@@ -207,32 +209,61 @@
    PRODUCT ANIMATION (CARD) - SLIDE IN, HOLD 20S
    THEN FADE OUT
 ============================================== */
+/* Product Animation Container */
+/* Product Animation Container */
 #product-animation-container {
   position: fixed;
   top: 50%;
   left: 50%;
-  /* Start off-screen to the right: x= +120% offset from center */
-  transform: translate(120%, -50%);
+  transform: translate(120%, -50%); /* Start off-screen to the right */
   opacity: 0;
   z-index: 10020;
-  pointer-events: none; /* So clicks pass through if desired */
+  pointer-events: none; /* Clicks pass through */
 }
 
+/* Default (Medium Screens) */
 #product-animation-image {
   width: 100%;
-  max-width: 600px;
+  max-width: 800px; /* Base size */
   height: auto;
   display: block;
-  border: 4px solid #b2c7f0; /* Soft refined border */
+  border: 4px solid #b2c7f0;
   border-radius: 10px;
-  box-shadow: 3px 4px 12px rgba(178, 199, 240, 0.6); /* Subtle shadow */
+  box-shadow: 3px 4px 12px rgba(178, 199, 240, 0.6);
+}
+
+/* 📌 LARGE SCREENS (30% Larger) */
+@media (min-width: 1200px) {
+  #product-animation-image {
+    max-width: 1040px; /* 30% larger */
+  }
+}
+
+/* 📌 MOBILE SCREENS (40% Larger) */
+@media (max-width: 480px) {
+  #product-animation-image {
+    max-width: 1120px; /* 40% larger */
+    width: 120vw; /* Force bigger scaling */
+  }
+}
+
+/* 📌 TABLETS & LAPTOPS (Normal size) */
+@media (min-width: 768px) and (max-width: 1199px) {
+  #product-animation-image {
+    max-width: 800px; /* Default size */
+  }
+}
+
+/* 📌 Small Mobile Screens (Make it Fit) */
+@media (max-width: 360px) {
+  #product-animation-image {
+    max-width: 400px; /* Adjust for small screens */
+    width: 90vw; /* Stretch to fit viewport */
+  }
 }
 
 /* 
-   28s total => ~4s slide in, 20s hold, 4s fade out 
-   0% -> 14%  (about 4s) => Slide in & fade in
-   14% -> 86% (about 20s) => Hold center
-   86% -> 100% (about 4s) => Fade out 
+   Animation: Slide in (4s), Hold (20s), Fade out (4s)
 */
 @keyframes cardSlideHoldFade {
   0% {
@@ -253,7 +284,7 @@
   }
 }
 
-/* Triggered by JS after 5s */
+/* Trigger Animation */
 .animate-product {
   animation: cardSlideHoldFade 28s forwards ease-in-out;
 }

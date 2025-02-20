@@ -46,7 +46,7 @@ const messagesByLanguage = {
         "Worldwide, ticks are an enormous problem.",
         "If humans consume the natural hosts (cows, goats, deer, rabbits, etc.), the problem with ticks increases massively, and the region loses its natural shield."
     ]
-    // ... other languages unchanged if needed ...
+    // Add other languages if needed...
 };
 
 // Grab references
@@ -120,18 +120,19 @@ function createStar(autoMove = false, animationType = '') {
         starImg.style.height = '40px';
     }
 
-    // starImg.src = starAnimationData.baseUrl + starImageFile;
-    starImg.src = "./assets/" + starImageFile; // local path
+    starImg.src = "./assets/" + starImageFile;
     starImg.classList.add('star-image');
     star.appendChild(starImg);
 
     if (autoMove) {
+        // Move star automatically across screen
         star.style.left = '-50px';
         star.style.top = '-50px';
         star.style.transform = 'none';
         star.style.animation = `${animationType} 18.5s ease-in-out forwards`;
         star.fallTimeout = setTimeout(() => handleStarFall(star, true), 15000);
     } else {
+        // Use one of the star path animations
         const currentPath = paths[pathIndex];
         star.style.animation = `${currentPath} 130s linear infinite`;
         pathIndex = (pathIndex + 1) % paths.length;
@@ -250,7 +251,9 @@ function startStars() {
  * Initialize the star animations
  */
 function initStars() {
+    // Create a star immediately
     createStar();
+    // Then continue generating stars every 5 seconds
     startStars();
 }
 
@@ -278,7 +281,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', handleStartStarsOnScroll);
 
     // =============================================
-    //  NEW CODE: Show the "Card" GIF after 5s
+    //  Show the product animation after 5s
     // =============================================
     setTimeout(() => {
         showProductAnimation();
@@ -286,7 +289,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /**
- * Show the product animation (slide from right -> center, hold 20s, fade).
+ * Show the product animation (slide from right -> center, hold ~20s, fade).
  * Force the GIF to restart by toggling src briefly.
  */
 function showProductAnimation() {
@@ -296,27 +299,27 @@ function showProductAnimation() {
     const productImage = document.getElementById('product-animation-image');
 
     if (!productContainer || !productImage) {
-        console.log("Product animation elements not found!");
+        console.error("Product animation elements not found!");
         return;
     }
 
     console.log("Product animation elements found!");
 
-    // **Force GIF Restart** by appending a unique timestamp
-    productImage.src = ""; // Clear src first
+    // Force reload by appending a unique timestamp
+    productImage.src = ""; // Clear previous GIF
     setTimeout(() => {
         productImage.src = `./assets/Product_Animation5.gif?${Date.now()}`;
         console.log("GIF src updated:", productImage.src);
     }, 50);
 
-    // 2) Add animation class (slight delay)
+    // Apply animation class
     setTimeout(() => {
         productContainer.classList.add('animate-product');
     }, 100);
 
-    // 3) Remove container after total 28s + 4s buffer => 32s
+    // Remove container after 32s (28s animation + 4s buffer)
     setTimeout(() => {
         productContainer.remove();
+        console.log("Product animation container removed.");
     }, 32000);
 }
-
