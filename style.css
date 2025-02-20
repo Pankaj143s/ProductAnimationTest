@@ -289,3 +289,16 @@ Star Movement Animations (UNCHANGED)
 .animate-product {
   animation: cardSlideHoldFade 28s forwards ease-in-out;
 }
+
+.page1 {
+  background-image: url("./assets/page1.png");
+  z-index: 0;
+}
+.page2 {
+  background-image: url("./assets/page2.png");
+  z-index: 0;
+}
+.page3 {
+  background-image: url("./assets/page3.png");
+  z-index: 0;
+}
