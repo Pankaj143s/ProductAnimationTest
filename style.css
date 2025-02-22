@@ -1,230 +1,23 @@
-/* 
-===============================================
- STAR ANIMATION WRAPPER (Unchanged from Original)
-===============================================
+/*****************************************
+ Product Animation Plugin (No stars!)
+*****************************************/
+
+/* Product Animation Container: 
+   pinned center, hidden at first 
 */
-.star-animation-wrapper {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100vh;
-  background-color: transparent;
-  overflow: hidden;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 10000;
-  pointer-events: none; /* Allow clicks to pass through the wrapper */
-}
-
-.star-animation-wrapper .message-container {
-  position: absolute;
-  top: 40vh;
-  right: 5px;
-  max-width: 300px;
-  z-index: 10003;
-}
-
-.star-animation-wrapper .message-container .message {
-  position: absolute;
-  right: 0;
-  width: 350px;
-  padding: 10px;
-  background-color: rgba(0, 0, 0, 0.9);
-  color: white;
-  font-size: 1.2rem;
-  border-radius: 10px;
-  text-align: center;
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.5s ease, transform 0.5s ease, top 0.5s ease;
-  border-bottom: 3px #68c6a1 solid;
-  z-index: 10004;
-}
-
-.star-animation-wrapper .star-container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
-.star-animation-wrapper .star-container .star {
-  cursor: pointer;
-  position: absolute;
-  opacity: 1;
-  transition: opacity 2s;
-  animation-duration: 300s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  box-sizing: content-box;
-  z-index: 10002;
-  pointer-events: auto; /* Make stars clickable */
-  outline: none;
-  -webkit-tap-highlight-color: transparent;
-  touch-action: none; /* Prevent default touch actions */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.star-animation-wrapper .star-container .star .star-image {
-  width: 40px;
-  height: 40px;
-}
-
-/* Optional "first message" pop-up styling */
-#first-message-image {
-  max-width: 90%;
-  width: 420px;
-}
-
-/* Center Message Styling */
-.center-message {
-  max-width: 80%;
-  width: 400px;
-  height: auto;
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 10010;
-  opacity: 0;
-  transition: opacity 1s ease, transform 2s ease-in-out;
-}
-
-/* Responsive Tweaks for Star Messages */
-@media (max-width: 1366px) {
-  .star-animation-wrapper .message-container {
-    right: 0;
-  }
-  .star-animation-wrapper .message-container .message {
-    font-size: 1rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .star-animation-wrapper .message-container {
-    right: 0;
-  }
-  .star-animation-wrapper .message-container .message {
-    font-size: 0.9rem;
-  }
-  #first-message-image {
-    width: 300px;
-  }
-}
-
-@media (max-width: 480px) {
-  .star-animation-wrapper .message-container .message {
-    font-size: 0.9rem;
-    max-width: 200px;
-  }
-  #first-message-image {
-    width: 250px;
-  }
-  .center-message {
-    width: 50%;
-    max-width: none;
-  }
-}
-
-@media (max-width: 320px) {
-  .star-animation-wrapper .message-container .message {
-    font-size: 0.85rem;
-    max-width: 160px;
-  }
-  .center-message {
-    width: 30%;
-    max-width: none;
-  }
-}
-
-/*
-Star Movement Animations (UNCHANGED)
-*/
-@keyframes move-star-1 {
-  0% {
-    transform: translate(-5vw, -3vh);
-  }
-  25% {
-    transform: translate(75vw, 37vh);
-  }
-  50% {
-    transform: translate(10vw, 55vh);
-  }
-  75% {
-    transform: translate(90vw, 80vh);
-  }
-  100% {
-    transform: translate(20vw, 100vh);
-  }
-}
-@keyframes move-star-2 {
-  0% {
-    transform: translate(-5vw, -4vh);
-  }
-  25% {
-    transform: translate(95vw, 20vh);
-  }
-  50% {
-    transform: translate(15vw, 60vh);
-  }
-  75% {
-    transform: translate(85vw, 90vh);
-  }
-  100% {
-    transform: translate(25vw, 100vh);
-  }
-}
-@keyframes move-star-3 {
-  0% {
-    transform: translate(0, 0);
-  }
-  25% {
-    transform: translate(85vw, 50vh);
-  }
-  50% {
-    transform: translate(15vw, 70vh);
-  }
-  75% {
-    transform: translate(90vw, 95vh);
-  }
-  100% {
-    transform: translate(20vw, 100vh);
-  }
-}
-@keyframes fall {
-  0% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(100vh);
-    opacity: 0;
-  }
-}
-
-/* ==============================================
-   PRODUCT ANIMATION (CARD) - SLIDE IN, HOLD 20S
-   THEN FADE OUT
-============================================== */
-/* Product Animation Container */
-/* Product Animation Container */
 #product-animation-container {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(120%, -50%); /* Start off-screen to the right */
+  transform: translate(-50%, -50%);
   opacity: 0;
   z-index: 10020;
-  pointer-events: none; /* Clicks pass through */
+  pointer-events: none;
 }
 
-/* Default (Medium Screens) */
 #product-animation-image {
   width: 100%;
-  max-width: 800px; /* Base size */
+  max-width: 800px;
   height: auto;
   display: block;
   border: 4px solid #b2c7f0;
@@ -232,73 +25,76 @@ Star Movement Animations (UNCHANGED)
   box-shadow: 3px 4px 12px rgba(178, 199, 240, 0.6);
 }
 
-/* 📌 LARGE SCREENS (30% Larger) */
-@media (min-width: 1200px) {
-  #product-animation-image {
-    max-width: 1040px; /* 30% larger */
-  }
-}
-
-/* 📌 MOBILE SCREENS (40% Larger) */
-@media (max-width: 480px) {
-  #product-animation-image {
-    max-width: 1120px; /* 40% larger */
-    width: 90vw; /* Force bigger scaling */
-  }
-}
-
-/* 📌 TABLETS & LAPTOPS (Normal size) */
-@media (min-width: 768px) and (max-width: 1199px) {
-  #product-animation-image {
-    max-width: 800px; /* Default size */
-    width: 85vw; /* Force bigger scaling */
-  }
-}
-
-/* 📌 Small Mobile Screens (Make it Fit) */
-@media (max-width: 360px) {
-  #product-animation-image {
-    max-width: 500px; /* Adjust for small screens */
-    width: 95vw; /* Stretch to fit viewport */
-  }
-}
-
-/* 
-   Animation: Slide in (4s), Hold (20s), Fade out (4s)
-*/
+/* Optional 28s keyframe for "slide from bottom -> center -> fade out" */
 @keyframes cardSlideHoldFade {
   0% {
-    transform: translate(120%, -50%);
+    transform: translate(-50%, 120%) scaleY(0);
     opacity: 0;
   }
   14% {
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scaleY(1);
     opacity: 1;
   }
   86% {
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scaleY(1);
     opacity: 1;
   }
   100% {
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scaleY(0);
     opacity: 0;
   }
 }
-
-/* Trigger Animation */
 .animate-product {
   animation: cardSlideHoldFade 28s forwards ease-in-out;
 }
 
-.page1 {
-  background-image: url("./assets/page1.png");
-  z-index: 0;
+/*******************************************
+ Donation Button (2-line text) 
+********************************************/
+.donation-button-custom {
+  background-color: #fbc02d;
+  font-weight: 700;
+  color: #333;
+  text-align: center;
+  line-height: normal;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  padding: 8px 15px;
+  user-select: none;
+  display: inline-block;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
 }
-.page2 {
-  background-image: url("./assets/page2.png");
-  z-index: 0;
+.donation-button-custom:hover {
+  background-color: #ffd54f;
 }
-.page3 {
-  background-image: url("./assets/page3.png");
-  z-index: 0;
+.donation-button-custom span {
+  display: inline-block;
+  line-height: 1.2;
+}
+
+/* Example responsive image widths */
+@media (min-width: 1200px) {
+  #product-animation-image {
+    max-width: 1040px;
+  }
+}
+@media (max-width: 480px) {
+  #product-animation-image {
+    max-width: 1120px;
+    width: 90vw;
+  }
+}
+@media (min-width: 768px) and (max-width: 1199px) {
+  #product-animation-image {
+    max-width: 800px;
+    width: 85vw;
+  }
+}
+@media (max-width: 360px) {
+  #product-animation-image {
+    max-width: 500px;
+    width: 95vw;
+  }
 }
