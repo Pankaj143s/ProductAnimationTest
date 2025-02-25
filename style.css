@@ -1,100 +1,195 @@
-/*****************************************
- Product Animation Plugin (No stars!)
-*****************************************/
+/* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-/* Product Animation Container: 
-   pinned center, hidden at first 
-*/
-#product-animation-container {
+body {
+  background-image: url("./assets/BG.png");
+}
+/* Use Poppins font throughout */
+body,
+.sidebar-content {
+  font-family: "Poppins", sans-serif;
+}
+
+/* Define variables for glass effect and text color */
+:root {
+  --bg-color: rgba(143, 156, 197, 0.5); /* Semi-transparent for glass effect */
+  --text-color: #000000; /* Black text */
+}
+
+/* Sidebar Container with Glass Effect */
+.sidebar-container {
   position: fixed;
+  top: 0;
+  right: -350px; /* Hidden off-screen initially */
+  width: 350px;
+  height: 100vh;
+  background: var(--bg-color);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2);
+  transition: right 0.5s ease;
+  z-index: 9999;
+}
+
+.sidebar-container.open {
+  right: 0;
+}
+
+/* Sidebar Toggle Button with Glass Effect */
+.sidebar-toggle {
+  position: absolute;
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  opacity: 0;
-  z-index: 10020;
-  pointer-events: none;
-}
-
-#product-animation-image {
-  width: 100%;
-  max-width: 800px;
-  height: auto;
-  display: block;
-  border: 4px solid #b2c7f0;
-  border-radius: 10px;
-  box-shadow: 3px 4px 12px rgba(178, 199, 240, 0.6);
-}
-
-/* Optional 28s keyframe for "slide from bottom -> center -> fade out" */
-@keyframes cardSlideHoldFade {
-  0% {
-    transform: translate(-50%, 120%) scaleY(0);
-    opacity: 0;
-  }
-  14% {
-    transform: translate(-50%, -50%) scaleY(1);
-    opacity: 1;
-  }
-  86% {
-    transform: translate(-50%, -50%) scaleY(1);
-    opacity: 1;
-  }
-  100% {
-    transform: translate(-50%, -50%) scaleY(0);
-    opacity: 0;
-  }
-}
-.animate-product {
-  animation: cardSlideHoldFade 28s forwards ease-in-out;
-}
-
-/*******************************************
- Donation Button (2-line text) 
-********************************************/
-.donation-button-custom {
-  background-color: #fbc02d;
-  font-weight: 700;
-  color: #333;
-  text-align: center;
-  line-height: normal;
-  cursor: pointer;
+  left: -80px; /* Adjust so its right edge aligns with the sidebar */
+  transform: translateY(-50%);
+  width: 80px;
+  height: 80px;
   border: none;
-  border-radius: 5px;
-  font-size: 1rem;
-  padding: 8px 15px;
-  user-select: none;
-  display: inline-block;
-  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
-}
-.donation-button-custom:hover {
-  background-color: #ffd54f;
-}
-.donation-button-custom span {
-  display: inline-block;
-  line-height: 1.2;
+  background: var(--bg-color);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  outline: none;
+  overflow: hidden;
+  transition: none;
 }
 
-/* Example responsive image widths */
-@media (min-width: 1200px) {
-  #product-animation-image {
-    max-width: 1040px;
-  }
+.sidebar-toggle:hover {
+  transform: translateY(-50%);
 }
-@media (max-width: 480px) {
-  #product-animation-image {
-    max-width: 1120px;
-    width: 90vw;
-  }
+
+/* Adjusted Toggle Button Image */
+.toggle-btn-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
 }
-@media (min-width: 768px) and (max-width: 1199px) {
-  #product-animation-image {
-    max-width: 800px;
-    width: 85vw;
-  }
+
+/* Sidebar Content */
+.sidebar-content {
+  padding: 20px;
+  color: var(--text-color);
+  overflow-y: auto;
+  height: 100%;
 }
-@media (max-width: 360px) {
-  #product-animation-image {
-    max-width: 500px;
-    width: 95vw;
+
+/* Centered Headings */
+.sidebar-heading {
+  font-size: 1.8rem;
+  font-weight: 600; /* Reduced boldness */
+  text-align: center;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+  /* Removed text-shadow */
+}
+
+.sidebar-subheading {
+  font-size: 1.2rem;
+  font-weight: 400; /* Standard weight */
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
+  opacity: 0.9;
+}
+
+/* Product List: one image per row */
+.sidebar-product-list {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+
+.product-item {
+  width: 100%;
+  margin: 20px 0; /* 20px gap above and below each item */
+  position: relative;
+}
+
+/* Divider: full width with increased thickness */
+.product-item:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -10px;
+  height: 2px;
+  background: rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+/* Image Wrapper */
+.img-wrapper {
+  position: relative;
+  width: 100%;
+  cursor: pointer;
+}
+
+.img-wrapper img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* On hover, slightly enlarge image and increase brightness & saturation */
+.product-item:hover .img-wrapper img {
+  transform: scale(1.03);
+  filter: brightness(1.1) saturate(1.1);
+}
+
+/* Remove hover overlay text */
+.hover-text {
+  display: none;
+}
+
+/* CTA Section */
+.cta-section {
+  border-top: 1px solid rgba(0, 0, 0, 0.3);
+  padding-top: 1rem;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.cta-text {
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+.cta-button {
+  display: inline-block;
+  text-decoration: none;
+  background-color: #ffffff;
+  color: #4caf50;
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #f2f2f2;
+  color: #388e3c;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .sidebar-container {
+    width: 80%;
+    right: -80%;
+  }
+  .sidebar-container.open {
+    right: 0;
+  }
+  .sidebar-toggle {
+    left: -70px;
+    width: 70px;
+    height: 70px;
   }
 }

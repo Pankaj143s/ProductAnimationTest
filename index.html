@@ -2,45 +2,107 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tick Protektor Sidebar</title>
+    <!-- Import Google Font for an elegant look -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Link to external CSS -->
     <link rel="stylesheet" href="style.css" />
-    <title>Product Animation with Button Morph</title>
-    <style>
-      /* Example "pages" styling, if you still want them */
-      .page {
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 3rem;
-        font-family: Arial, sans-serif;
-      }
-      .page1 {
-        background-color: lightyellow;
-      }
-      .page2 {
-        background-color: lightseagreen;
-      }
-      .page3 {
-        background-color: lightgoldenrodyellow;
-      }
-    </style>
   </head>
   <body>
-    <!-- Product Animation Container -->
-    <div id="product-animation-container">
-      <img
-        src="./assets/Product_Animation9.gif"
-        alt="Product Animation"
-        id="product-animation-image"
-      />
+    <!-- Sidebar Container -->
+    <div class="sidebar-container" id="sidebar">
+      <!-- Toggle Button -->
+      <button class="sidebar-toggle" id="sidebarToggle">
+        <img src="./assets/P3.png" alt="Product" class="toggle-btn-image" />
+      </button>
+
+      <!-- Sidebar Content -->
+      <div class="sidebar-content">
+        <!-- Centered Heading and Subheading -->
+        <h2 class="sidebar-heading">100% Natural Tick Protection</h2>
+        <h4 class="sidebar-subheading">
+          Safe, Reliable, and Free from Poisons
+        </h4>
+
+        <!-- Product Images: one per row full width -->
+        <div class="sidebar-product-list">
+          <!-- Product Item 1 -->
+          <div class="product-item">
+            <div class="img-wrapper">
+              <img src="./assets/Pi1.png" alt="Organic Protection" />
+              <div class="hover-text">
+                Purely Organic Protection – No Chemicals
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Item 2 -->
+          <div class="product-item">
+            <div class="img-wrapper">
+              <img src="./assets/Pi2.png" alt="Tested & Proven" />
+              <div class="hover-text">
+                Tested & Proven – 7 Years of Research
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Item 3 -->
+          <div class="product-item">
+            <div class="img-wrapper">
+              <img src="./assets/P1.png" alt="No Side Effects" />
+              <div class="hover-text">
+                Keeps Ticks Away Without Side Effects
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Item 4 -->
+          <div class="product-item">
+            <div class="img-wrapper">
+              <img src="./assets/P2.png" alt="Safe for All" />
+              <div class="hover-text">Safe for Dogs, Cats & Humans</div>
+            </div>
+          </div>
+
+          <!-- Product Item 5 -->
+          <div class="product-item">
+            <div class="img-wrapper">
+              <img src="./assets/P3.png" alt="Join Movement" />
+              <div class="hover-text">
+                Join the Movement – Protect What You Love
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Item 6 -->
+          <div class="product-item">
+            <div class="img-wrapper">
+              <img src="./assets/P1.png" alt="Extra Protection" />
+              <div class="hover-text">
+                Extra Protection – Nature’s Best Defense
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="cta-section">
+          <p class="cta-text">
+            Join Our Mission – Your support helps bring 100% natural tick
+            protection to everyone.
+          </p>
+          <a href="https://tickprotektor.eu/#research" class="cta-button">
+            Support this project
+          </a>
+        </div>
+      </div>
+      <!-- End Sidebar Content -->
     </div>
 
-    <!-- Example pages (optional) -->
-    <div class="page page1">Page 1</div>
-    <div class="page page2">Page 2</div>
-    <div class="page page3">Page 3</div>
-
+    <!-- Link to external JavaScript -->
     <script src="script.js"></script>
   </body>
 </html>
