@@ -4,9 +4,9 @@
   padding: 0;
   box-sizing: border-box;
 }
-
 body {
   background-image: url("./assets/BG.png");
+  background-repeat: no-repeat;
 }
 /* Use Poppins font throughout */
 body,
@@ -14,9 +14,14 @@ body,
   font-family: "Poppins", sans-serif;
 }
 
-/* Define variables for glass effect and text color */
+/* Variables for glass effect and text color */
 :root {
-  --bg-color: rgba(143, 156, 197, 0.5); /* Semi-transparent for glass effect */
+  --bg-color: rgba(
+    143,
+    156,
+    197,
+    0.5
+  ); /* Semi-transparent "glass" background */
   --text-color: #000000; /* Black text */
 }
 
@@ -24,14 +29,14 @@ body,
 .sidebar-container {
   position: fixed;
   top: 0;
-  right: -350px; /* Hidden off-screen initially */
+  right: -350px; /* Hidden off-screen initially (desktop default width) */
   width: 350px;
   height: 100vh;
   background: var(--bg-color);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.3);
   box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2);
-  transition: right 0.5s ease;
+  transition: right 0.5s ease; /* Smooth slide effect */
   z-index: 9999;
 }
 
@@ -43,9 +48,9 @@ body,
 .sidebar-toggle {
   position: absolute;
   top: 50%;
-  left: -80px; /* Adjust so its right edge aligns with the sidebar */
+  left: -80px; /* Desktop default offset */
   transform: translateY(-50%);
-  width: 80px;
+  width: 80px; /* Desktop default size */
   height: 80px;
   border: none;
   background: var(--bg-color);
@@ -60,7 +65,7 @@ body,
   transform: translateY(-50%);
 }
 
-/* Adjusted Toggle Button Image */
+/* Toggle Button Image */
 .toggle-btn-image {
   width: 100%;
   height: 100%;
@@ -76,19 +81,18 @@ body,
   height: 100%;
 }
 
-/* Centered Headings */
+/* Headings */
 .sidebar-heading {
   font-size: 1.8rem;
-  font-weight: 600; /* Reduced boldness */
+  font-weight: 600;
   text-align: center;
   margin-bottom: 0.5rem;
   color: var(--text-color);
-  /* Removed text-shadow */
 }
 
 .sidebar-subheading {
   font-size: 1.2rem;
-  font-weight: 400; /* Standard weight */
+  font-weight: 400;
   text-align: center;
   margin-bottom: 1.5rem;
   color: var(--text-color);
@@ -99,17 +103,16 @@ body,
 .sidebar-product-list {
   display: flex;
   flex-direction: column;
-  margin: 0;
-  padding: 0;
 }
 
+/* Each product item block */
 .product-item {
   width: 100%;
-  margin: 20px 0; /* 20px gap above and below each item */
+  margin: 20px 0; /* 20px gap above/below */
   position: relative;
 }
 
-/* Divider: full width with increased thickness */
+/* Divider under each item except the last */
 .product-item:not(:last-child)::after {
   content: "";
   position: absolute;
@@ -128,6 +131,7 @@ body,
   cursor: pointer;
 }
 
+/* Product images fill the sidebar width */
 .img-wrapper img {
   width: 100%;
   height: auto;
@@ -136,13 +140,13 @@ body,
   transition: transform 0.3s ease, filter 0.3s ease;
 }
 
-/* On hover, slightly enlarge image and increase brightness & saturation */
+/* Hover effect: slightly enlarge + saturate */
 .product-item:hover .img-wrapper img {
   transform: scale(1.03);
   filter: brightness(1.1) saturate(1.1);
 }
 
-/* Remove hover overlay text */
+/* Hover text is hidden in this design */
 .hover-text {
   display: none;
 }
@@ -178,8 +182,29 @@ body,
   color: #388e3c;
 }
 
-/* Responsive Adjustments */
+/* --- RESPONSIVE BREAKPOINTS --- */
+
+/* Tablets: ~769px to 1024px */
+@media (max-width: 1024px) {
+  .sidebar-container {
+    width: 400px; /* Slightly wider for tablets */
+    right: -400px;
+  }
+  .sidebar-container.open {
+    right: 0;
+  }
+
+  /* Toggle button bigger for tablets */
+  .sidebar-toggle {
+    left: -90px;
+    width: 90px;
+    height: 90px;
+  }
+}
+
+/* Mobile: up to 768px wide */
 @media (max-width: 768px) {
+  /* Let the sidebar be 80% wide (smaller than before) */
   .sidebar-container {
     width: 80%;
     right: -80%;
@@ -187,9 +212,11 @@ body,
   .sidebar-container.open {
     right: 0;
   }
+
+  /* Make the toggle button a bit smaller than 100px */
   .sidebar-toggle {
-    left: -70px;
-    width: 70px;
-    height: 70px;
+    left: -80px;
+    width: 80px;
+    height: 80px;
   }
 }
